@@ -1,0 +1,57 @@
+
+general {
+    colors = true
+    interval = 5
+    # ... other general settings
+}
+
+# This is where your code snippet goes:
+order += "volume master"
+order += "memory"
+order += "cpu_usage"
+order += "disk /"
+order += "disk /home"
+order += "time"
+
+# And then below this, you would define the specific sections for each module:
+
+time {
+    format = "%m/%d %H:%M:%S"
+}
+
+disk "/" {
+    format = "root: %avail"
+}
+
+disk "/home" {
+    format = "home: %avail"
+}
+
+# Memory Usage (requires 'libstatgrab' or similar depending on system)
+memory {
+        format = "Mem: %percentage_used"
+}
+
+# CPU Load Average
+cpu_usage {
+        format = "CPU: %usage"
+        # Optional: set color thresholds (defaults are 90 and 95)
+        degraded_threshold = 80
+        max_threshold = 95
+        # Optional: customize format when above thresholds
+        format_above_threshold = "CPU: HIGH %usage"
+        format_above_degraded_threshold = "CPU: warning %usage"
+}
+
+# Volume Module
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        # Use 'default' device unless a specific one is needed.
+        device = "default"
+        mixer = "Master"
+}
+
+# battery 0 and run_watch DHCP usually don't need their own section
+# unless you want to customize their format or colors.
+
