@@ -10,8 +10,8 @@ personal config for common Linux tools
 # Install everything required
 
 ## nvim
-
 ### Install nvim from source
+
 Debian is too stable. Install this one from source.
 ```
 sudo apt-get install ninja-build gettext cmake curl build-essential git
@@ -22,6 +22,7 @@ make install
 export PATH="$HOME/neovim/bin:$PATH"
 ```
 Make sure the final line is in the `.bashrc` and `.zshrc`.
+
 
 ### python LSP: pyright
 ```
