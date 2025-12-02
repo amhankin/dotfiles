@@ -16,6 +16,7 @@ Debian is too stable. Install this one from source.
 ```
 sudo apt-get install ninja-build gettext cmake curl build-essential git
 git clone https://github.com/neovim/neovim
+cd neovim
 git checkout stable
 make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
 make install
