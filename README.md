@@ -7,8 +7,18 @@ personal config for common Linux tools
     - You'll need to remove any preexisting files if they exist.
 - See below for required package installs
 
-# Install everything required
+# Setup All
 
+## bashrc
+Add this to end of ~/.bashrc
+```
+# include .bashrc_aliases if it exists
+if [ -f $HOME/dev/dotfiles/personal/bashrc]; then
+    . $HOME/dev/dotfiles/personal/bashrc
+fi
+```
+
+ 
 ## nvim
 ### Install nvim from source
 
