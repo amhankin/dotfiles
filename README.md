@@ -47,6 +47,11 @@ sudo apt install maim xclip xdotool
 sudo apt install picom
 ```
 
+## ranger
+```
+sudo apt install ranger
+```
+
 # optional packages
 sudo apt install lazygit
 
