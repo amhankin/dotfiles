@@ -7,7 +7,7 @@ if [ ! -f "$SSH_AUTH_SOCK" ]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 export LS_OPTIONS='--color=auto'
 export PATH=$PATH:~/.local/bin/
 export PATH="$HOME/neovim/bin:$PATH"
@@ -36,4 +36,5 @@ alias dev='cd ~/dev'
 alias nvimconfig='cd ~/.config/nvim; nvim init.lua'
 alias bashrc='source ~/.bashrc'
 alias todo='nvim ~/.todo.md'
+alias vim='nvim'
 
