@@ -1,0 +1,39 @@
+
+## start ssh-agent if one is not running already
+#if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+#fi
+#if [ ! -f "$SSH_AUTH_SOCK" ]; then
+#    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+#fi
+#
+export EDITOR=nvim
+export PATH=:~/.local/bin:$PATH
+export PATH="$HOME/neovim/bin:$PATH"
+
+# User specific aliases and functions
+alias la='ls -a'
+alias ll='ls -l'
+alias q='exit'
+alias :q='exit'
+alias :wq='exit'
+alias wq='exit'
+alias g='gnome-open'
+alias sug='gksudo gnome-open'
+alias multiplot='~/Scripts/multiplot.sh'
+alias pdfconcat='~/Scripts/pdfconcat.sh'
+alias shareInternet='~/Scripts/shareInternet.sh'
+alias gshell='./gnome-shell/source/gnome-shell/src/gnome-shell --replace'
+alias rsprog='rsync -axE --progress'
+alias rsdele='rsync -axE --progress --delete'
+alias invert='xcalib -invert -alter'
+eval "`dircolors`"
+alias ls='ls $LS_OPTIONS'
+alias gnome-settings='env XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
+alias ~='cd ~'
+alias dev='cd ~/dev'
+alias nvimconfig='cd ~/.config/nvim; nvim init.lua'
+alias bashrc='source ~/.bashrc'
+alias todo='nvim ~/.todo.md'
+alias vim='nvim'
+
