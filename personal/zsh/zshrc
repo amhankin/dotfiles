@@ -124,6 +124,6 @@ bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
 
 # include .bashrc_aliases if it exists
-if [ -f $HOME/dev/dotfiles/personal/bashrc ]; then
-    . $HOME/dev/dotfiles/personal/bashrc
+if [ -f $HOME/dev/dotfiles/personal/bashrc_extras ]; then
+    . $HOME/dev/dotfiles/personal/bashrc_extras
 fi

@@ -23,7 +23,7 @@ fi
 export LS_OPTIONS='--color=auto'
 
 # include .bashrc_aliases if it exists
-if [ -f $HOME/dev/dotfiles/personal/bashrc ]; then
+if [ -f $HOME/dev/dotfiles/personal/bashrc_extras ]; then
     . $HOME/dev/dotfiles/personal/bashrc_extras
 fi
 
