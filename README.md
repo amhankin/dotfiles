@@ -55,5 +55,17 @@ sudo apt install ranger
 # optional packages
 sudo apt install lazygit
 
+
+## python from source
+wget https://www.python.org/ftp/python/3.13.9/Python-3.13.9.tgz
+tar -xzvf Python-3.13.9.tgz
+mkdir ~/.local/opt
+./configure --enable-optimizations --prefix=$HOME/.local/opt
+make -j $(nproc)
+make install
+ln -s ~/.local/opt/bin/python3 ~/.local/bin/
+
+
+
 # TODO
 - Write script to move any existing config folders to a backup location

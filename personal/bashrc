@@ -9,7 +9,7 @@ fi
 
 export EDITOR=nvim
 export LS_OPTIONS='--color=auto'
-export PATH=$PATH:~/.local/bin/
+export PATH=:~/.local/bin:$PATH
 export PATH="$HOME/neovim/bin:$PATH"
 
 # User specific aliases and functions
