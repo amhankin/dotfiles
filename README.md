@@ -1,13 +1,7 @@
 # dotfiles
 personal config for common Linux tools
 
-# Quick Setup
-- Create symbolic links in `$HOME/` and `$HOME/.config/` with `setup.sh` file.
-- Use `chmod +x setup.sh` to make the file executable.
-    - You'll need to remove any preexisting files if they exist.
-- See below for required package installs
-
-# Setup All
+# Setup
 
 ## bashrc
 Add this to end of ~/.bashrc
@@ -28,14 +22,12 @@ sudo apt-get install ninja-build gettext cmake curl build-essential git
 git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-make install
-export PATH="$HOME/neovim/bin:$PATH"
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local install
 ```
-Make sure the final line is in the `.bashrc` and `.zshrc`.
+PATH is set in `bashrc_extras`
 
 
-### python LSP: pyright
+### python LSP: pyright (optional)
 ```
 sudo apt install npm
 ```
