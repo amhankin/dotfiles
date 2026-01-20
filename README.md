@@ -23,6 +23,7 @@ git clone https://github.com/neovim/neovim
 cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local install
+ln -s ~/dev/dotfiles/personal/config/nvim ~/.config/nvim
 ```
 PATH is set in `bashrc_extras`
 
@@ -34,9 +35,13 @@ sudo apt install npm
 
 ## i3 window manager
 ```
-sudo apt install feh
-sudo apt install maim xclip xdotool
-sudo apt install picom
+sudo apt install i3 -y
+sudo apt install feh -y
+sudo apt install maim xclip xdotool -y
+sudo apt install picom -y
+ln -s ~/dev/dotfiles/personal/config/i3 ~/.config/i3
+ln -s ~/dev/dotfiles/personal/config/i3status ~/.config/i3status
+ln -s ~/dev/dotfiles/personal/config/picom.conf ~/.config/picom.conf
 ```
 
 ## ranger
@@ -44,8 +49,13 @@ sudo apt install picom
 sudo apt install ranger
 ```
 
-# optional packages
-sudo apt install lazygit
+# lazygit
+```
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
+```
 
 
 ## python from source
