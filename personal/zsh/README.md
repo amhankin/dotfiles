@@ -14,3 +14,4 @@ git clone https://github.com/jeffreytse/zsh-vi-mode \
 
 # sym link to zshrc
 ln -s ~/dev/dotfiles/personal/zsh/zshrc ~/.zshrc
+
