@@ -228,9 +228,22 @@ mode "$mode_redshift" {
     bindsym Escape mode "default"
 }
 
-exec_always feh --bg-fill ~/Downloads/wallpaper.png
-exec_always --no-startup-id picom --config ~/.config/picom.conf -b
-exec --no-startup-id redshift
+# screenshot
+bindsym --release Print exec maim -s | xclip -selection clipboard -t image/png
 
+#exec --no-startup-id xsettingsd
+#exec --no-startup-id redshift
+#exec_always --no-startup-id xsetroot -cursor_name left_ptr
+
+# visual settings
+#gaps outer 2
+gaps inner 6
+smart_gaps on
+for_window [class=".*"] border pixel 0
+#default_border pixel 4
+
+# order might matter here
+exec --no-startup-id picom --config ~/.config/picom.conf -b
 include ./config_displays
+exec_always --no-startup-id feh --bg-fill ~/Downloads/wallpaper.png
 
