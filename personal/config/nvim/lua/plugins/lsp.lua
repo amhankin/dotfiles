@@ -237,8 +237,8 @@ return {
 
       require('mason-lspconfig').setup {
         ensure_installed = {
-          'pyright',
-        }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+          --'pyright',
+        },
         automatic_installation = false,
         handlers = {
           function(server_name)
