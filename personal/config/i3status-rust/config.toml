@@ -1,22 +1,50 @@
 icons_format = "{icon}"
 
 [theme]
-theme = "solarized-dark"
-[theme.overrides]
-idle_bg = "#123456"
-idle_fg = "#abcdef"
+theme = "slick"
+#theme = "srcery"
+#theme = "space-villain"
+#theme = "semi-native"
+#theme = "dracula"
+#theme = "tomorrow-night"
+
+#[theme.overrides]
+#idle_bg = "#123456"
+#idle_fg = "#abcdef"
 
 [icons]
-icons = "awesome4"
+icons = "awesome6"
 [icons.overrides]
 bat = ["|E|", "|_|", "|=|", "|F|"]
 bat_charging = "|^| "
+
+[[block]]
+block = "temperature"
+format = " $icon $max "
+chip = "k10temp-pci-00c3"
+inputs = ["Tctl"]
+interval = 5
+good = 45      # Green up to 45°C
+idle = 65      # Blue/Idle up to 60°C
+info = 75      # Yellow up to 70°C
+warning = 85   # Orange up to 85°C, Critical (Red) beyond
+
+[[block]]
+block = "custom"
+command = "sensors | grep 'CPU Fan' | awk '{print $3}'"
+interval = 5
+format = "  $text RPM "
 
 [[block]]
 block = "cpu"
 info_cpu = 20
 warning_cpu = 50
 critical_cpu = 90
+interval = 1
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents.eng(w:3) "
 
 [[block]]
 block = "disk_space"
@@ -26,20 +54,30 @@ alert_unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
-format = " $icon root: $available.eng(w:2) "
+format = " $icon /: $available.eng(w:4) "
 
 [[block]]
-block = "memory"
-format = " $icon $mem_total_used_percents.eng(w:2) "
-format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
+block = "disk_space"
+path = "/home/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 60.0
+alert = 30.0
+format = " $icon /home: $available.eng(w:4) "
 
 [[block]]
 block = "sound"
+format = " $icon {<span rise='-6048'>$volume</span>|<span rise='-6048'>Muted</span>} "
 [[block.click]]
 button = "left"
-cmd = "pavucontrol"
+cmd = "GTK_THEME=Adwaita:dark pavucontrol"
 
 [[block]]
 block = "time"
 interval = 5
-format = " $timestamp.datetime(f:'%a %m/%d/%y %R') "
+format = " $icon $timestamp.datetime(f:'%a %m/%d/%y %R') "
+[[block.click]]
+button = "left"
+cmd = "GTK_THEME=Adwaita:dark gsimplecal"
+
