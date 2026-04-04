@@ -1,4 +1,14 @@
 
 //@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
-@theme "/usr/share/rofi/themes/solarized.rasi"
+//@theme "/usr/share/rofi/themes/solarized.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar.rasi"
+
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
+
+//@theme "/usr/share/rofi/themes/solarized_alternate.rasi"
+
+//@theme "/usr/share/rofi/themes/android_notification.rasi"
+
+@theme "/home/quickridge/.local/share/rofi/themes/oxide.rasi"
