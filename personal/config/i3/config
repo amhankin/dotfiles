@@ -247,12 +247,20 @@ for_window [class=".*"] border pixel 0
 # autotile windows
 exec_always --no-startup-id autotiling
 
-# order might matter here
-#exec --no-startup-id ~/.screenlayout/diplay_layout.sh
+# resolution and wallpaper
+exec_always --no-startup-id ~/.screenlayout/display_layout.sh && \
+	sleep 1 && \
+	feh --randomize --bg-fill ~/pictures/wallpapers/current/*
+
+# organize desktops by screen
 include ./config_displays
+
 #exec --no-startup-id nvidia-settings --load-config-only
+
+# picom for transparency and rounded cornders
 exec_always --no-startup-id picom --config ~/.config/picom.conf -b
-exec_always --no-startup-id feh --bg-fill ~/Downloads/wallpaper.png
+
+# TODO: get this working with current location
 #exec --no-startup-id redshift
 
 # os keyring for password storage
