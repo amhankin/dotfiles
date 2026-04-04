@@ -42,7 +42,10 @@ return {
       explorer = {
         view_mode = "tree",
         flatten_dirs = "true",
-      }
+      },
+      keymaps = {
+        view = { toggle_stage = "s" }
+      },
     },
   }
 
