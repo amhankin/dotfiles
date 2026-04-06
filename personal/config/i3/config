@@ -31,7 +31,9 @@ exec --no-startup-id dex --autostart --environment i3 --force-xinerama -V >>~/.i
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --no-fork -i ~/Downloads/lockscreen.png
 #bindsym $mod+q exec i3lock -i ~/Downloads/lockscreen.png
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --no-fork
-bindsym $mod+q exec i3lock
+#bindsym $mod+q exec i3lock
+#bindsym $mod+q exec i3lock-color -i "$(find ~/pictures/wallpapers/current -type f | shuf -n 1)"
+bindsym $mod+q exec i3lock -i "$(find ~/pictures/wallpapers/current -type f | shuf -n 1)" --fill
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
