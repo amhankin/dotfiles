@@ -256,8 +256,8 @@ for_window [class=".*"] border pixel 0
 for_window [app_id=".*"] border pixel 0
 # opacity
 # get app-id from `swaymsg -t get_tree`
-exec_always swaymsg "for_window [app_id="kitty"] opacity 0.85"
-exec_always swaymsg "for_window [app_id="code"] opacity 0.85"
+exec_always swaymsg "for_window [app_id="kitty"] opacity 0.90"
+exec_always swaymsg "for_window [app_id="code-oss"] opacity .90"
 #
 # Start gnome-keyring-daemon and export the SSH agent socket
 #
