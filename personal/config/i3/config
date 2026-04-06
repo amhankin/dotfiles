@@ -213,6 +213,18 @@ bar {
 	position top
         #status_command i3status
 	status_command i3status-rs ~/.config/i3status-rust/config.toml
+
+	colors {
+	background #1F1F28
+	statusline #DCD7BA
+	separator  #54546D
+
+	# state             border  bg      text
+	focused_workspace   #2D4F67 #2D4F67 #DCD7BA
+	active_workspace    #1F1F28 #1F1F28 #DCD7BA
+	inactive_workspace  #1F1F28 #1F1F28 #727169
+	urgent_workspace    #C34043 #C34043 #DCD7BA
+	}
 }
 
 # redshift modes

@@ -7,10 +7,22 @@ theme = "slick"
 #theme = "semi-native"
 #theme = "dracula"
 #theme = "tomorrow-night"
+[theme.overrides]
+idle_bg = "#1F1F28"
+idle_fg = "#DCD7BA"
+info_bg = "#223249"
+info_fg = "#7E9CD8"
+good_bg = "#2B3328"
+good_fg = "#98BB6C"
+warning_bg = "#49443C"
+warning_fg = "#DCA561"
+critical_bg = "#43242B"
+critical_fg = "#E82424"
+#separator = " | "
 
-#[theme.overrides]
-#idle_bg = "#123456"
-#idle_fg = "#abcdef"
+[[block]]
+block = "focused_window"
+format = " $title.str(max_w:200) |"
 
 [icons]
 icons = "awesome6"
