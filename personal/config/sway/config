@@ -1,4 +1,4 @@
-# Default config for sway
+## Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -13,11 +13,12 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
+# Terminal emulator
 set $term kitty
-# Your preferred application launcher
-set $menu wmenu-run
-#set $menu ~/.config/sway/my-menu.sh
+# Application launcher: wofi
+#	-i -> case insensitve
+set $menu wofi --show drun -i
 
 ### Output configuration
 #
@@ -25,20 +26,23 @@ set $menu wmenu-run
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 exec_always swaymsg "output * bg $(find ~/pictures/wallpapers/current/ -type f | shuf --random-source=/dev/urandom -n 1) fill"
 
+# Define monitor variables
+set $left_monitor  DP-2
+set $right_monitor DP-1
+
 # left monitor
-output DP-2 {
+output $left_monitor {
     mode 3840x2160
-    scale 1.5
+    scale 2.0
     pos 0 0
 }
 # right monitor
 # 3840 / 1.5 = 2560
-output DP-1 {
-    pos 2560 0
+output $right_monitor {
+    #pos 2560 0
+    pos 1920 0
+    scale 1.0
 }
-# Define monitor variables
-set $left_monitor  DP-2
-set $right_monitor DP-1
 
 # Workspaces for the left monitor
 workspace 1 output $left_monitor
@@ -61,9 +65,13 @@ workspace 10 output $right_monitor
 #
 bindsym $mod+q exec swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill
 exec swayidle -w \
-         timeout 300 'swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 600 'swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill' \
+         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill'
+	 #timeout 1800 'systemctl suspend' \
+
+# don't lock steam apps when I'm using a controller
+for_window [class="steam_app*"] inhibit_idle focus
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -241,7 +249,7 @@ bindsym $mod+r mode "resize"
     #bindsym Print exec grim
     #bindsym Shift+Print exec grim -g "$(slurp)" 
     bindsym Ctrl+Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S.png')
-    bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" -- | wl-copy
+    bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
 #
 # autotile windows
 #
@@ -254,10 +262,24 @@ gaps inner 6
 smart_gaps on
 for_window [class=".*"] border pixel 0
 for_window [app_id=".*"] border pixel 0
+
 # opacity
 # get app-id from `swaymsg -t get_tree`
 exec_always swaymsg "for_window [app_id="kitty"] opacity 0.90"
 exec_always swaymsg "for_window [app_id="code-oss"] opacity .90"
+
+# font
+#font pango:DejaVu Sans 10
+#font pango:JetBrains Mono 10
+#font pango:Hack 10
+#font pango:Noto Sans 10
+#xwayland force_scale
+
+# screen red at night
+exec wlsunset \
+	-l 39.8680 -L -104.9719 \
+	-T 6500 -t 2500
+
 #
 # Start gnome-keyring-daemon and export the SSH agent socket
 #

@@ -43,7 +43,8 @@ warning = 85   # Orange up to 85°C, Critical (Red) beyond
 
 [[block]]
 block = "custom"
-command = "sensors | grep 'CPU Fan' | awk '{print $3}'"
+#command = "sensors | grep 'CPU Fan' | awk '{print $3}'"
+command = "sensors nct6799-isa-0290 | awk '/fan2/ {print $2}'"
 interval = 5
 format = "  $text RPM "
 

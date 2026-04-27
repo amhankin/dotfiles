@@ -1,7 +1,7 @@
 # config display resolutions
 
-set $firstMonitor DP-0
-set $secondMonitor HDMI-0
+set $firstMonitor DisplayPort-1
+set $secondMonitor DisplayPort-0
 
 workspace 1 output  $firstMonitor
 workspace 2 output  $firstMonitor
