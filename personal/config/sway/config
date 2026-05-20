@@ -32,15 +32,18 @@ set $right_monitor DP-1
 
 # left monitor
 output $left_monitor {
+    #mode 1920x1080
+    #mode 2560x1440
     mode 3840x2160
     scale 2.0
     pos 0 0
 }
 # right monitor
-# 3840 / 1.5 = 2560
 output $right_monitor {
-    #pos 2560 0
+    mode 1920x1080@144Hz
     pos 1920 0
+    #pos 2560 0
+    #pos 3840 0
     scale 1.0
 }
 
