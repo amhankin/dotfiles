@@ -20,58 +20,55 @@ set $term kitty
 #	-i -> case insensitve
 set $menu wofi --show drun -i
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-exec_always swaymsg "output * bg $(find ~/pictures/wallpapers/current/ -type f | shuf --random-source=/dev/urandom -n 1) fill"
 
 # Define monitor variables
-set $left_monitor  DP-2
-set $right_monitor DP-1
+set $top_monitor  DP-1
+set $bottom_monitor DP-2
 
-# left monitor
-output $left_monitor {
-    #mode 1920x1080
-    #mode 2560x1440
-    mode 3840x2160
-    scale 2.0
-    pos 0 0
-}
-# right monitor
-output $right_monitor {
+output $top_monitor {
     mode 1920x1080@144Hz
-    pos 1920 0
-    #pos 2560 0
-    #pos 3840 0
+    #mode 2560x1440
+    #mode 3840x2160
+    scale 1.0
+    pos 760 0
+} 
+output $bottom_monitor {
+    mode 3440x1440@240Hz
+    pos 0 1080
     scale 1.0
 }
 
+# hack for WoW forever
+exec_always xrandr --output DP-2 --primary
+
+### Output configuration
+
 # Workspaces for the left monitor
-workspace 1 output $left_monitor
-workspace 2 output $left_monitor
-workspace 3 output $left_monitor
-workspace 4 output $left_monitor
-workspace 5 output $left_monitor
+workspace 1 output $top_monitor
+workspace 2 output $top_monitor
+workspace 3 output $top_monitor
+workspace 4 output $top_monitor
+workspace 5 output $top_monitor
 
 # Workspaces for the right monitor
-workspace 6  output $right_monitor
-workspace 7  output $right_monitor
-workspace 8  output $right_monitor
-workspace 9  output $right_monitor
-workspace 10 output $right_monitor
+workspace 6  output $bottom_monitor
+workspace 7  output $bottom_monitor
+workspace 8  output $bottom_monitor
+workspace 9  output $bottom_monitor
+workspace 10 output $bottom_monitor
+
+### Background and lockscreen
 #
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-#
-#
-### Idle/Lock configuration
-#
-bindsym $mod+q exec swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill
+# exec_always ~/.local/bin/random-wallpaper > /tmp/wallpaper.log 2>&1  (add logs)
+exec_always ~/.local/bin/random-wallpaper
+bindsym $mod+q exec /home/quickridge/.local/bin/random-lockscreen
+
+# lockscreen
 exec swayidle -w \
-         timeout 600 'swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill' \
-         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -i "$(find ~/pictures/wallpapers/current -type f | shuf --random-source=/dev/urandom -n 1)" -s fill'
-	 #timeout 1800 'systemctl suspend' \
+    timeout 600 '/home/quickridge/.local/bin/random-lockscreen' \
+    timeout 900 'swaymsg "output * power off"' \
+        resume '/home/quickridge/.local/bin/monitors-on' \
+    before-sleep '/home/quickridge/.local/bin/random-lockscreen'
 
 # don't lock steam apps when I'm using a controller
 for_window [class="steam_app*"] inhibit_idle focus
@@ -268,8 +265,8 @@ for_window [app_id=".*"] border pixel 0
 
 # opacity
 # get app-id from `swaymsg -t get_tree`
-for_window [app_id="kitty"] opacity 0.90
-for_window [app_id="code-oss"] opacity 0.90
+for_window [app_id="kitty"] opacity 0.95
+for_window [app_id="code-oss"] opacity 0.95
 
 # Opacity
 
